@@ -10,6 +10,29 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class OkHttpUtil {
+    public static String get(String url) {
+        String result = null;
+
+        OkHttpClient okhttp = new OkHttpClient.Builder()
+            .connectTimeout(10, TimeUnit.MINUTES)
+            .readTimeout(10, TimeUnit.MINUTES)
+            .writeTimeout(10, TimeUnit.MINUTES)
+            .build();
+
+        Request request = new Request.Builder()
+            .url(url)
+            .build();
+
+        Call call = okhttp.newCall(request);
+
+        try {
+            Response response = call.execute();
+            result = response.toString();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
 
     public static void getAsync(String url) {
         OkHttpClient okhttp = new OkHttpClient.Builder()

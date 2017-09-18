@@ -9,10 +9,10 @@ fun main(args: Array<String>) {
     val hasRunningInstanceApi = "http://h5agent.alibaba.net/hasRunningInstance"
     val runApi = "http://h5agent.alibaba.net/run?timestamp=2000000000000&url=http://www.baidu.com"
     val runApiIP = "http://h5agent.alibaba.net/run?timestamp=2000000000000&url=http://www.baidu.com"
-    getAsync(hasRunningInstanceApi)
+//    getAsync(hasRunningInstanceApi)
 //    getAsync(runApi)
 //    getAsync(runApiIP)
-//    get(hasRunningInstanceApi)
+    get(hasRunningInstanceApi)
 //    get(runApi)
 //    get(runApiIP)
 }
