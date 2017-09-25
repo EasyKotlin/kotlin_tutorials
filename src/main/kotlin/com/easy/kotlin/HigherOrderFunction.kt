@@ -12,10 +12,12 @@ fun main(args: Array<String>) {
     // 非常好用的流式 API filter，flat，map 等等
     val mstrList = strList.filter(h)
     println(mstrList)
-    mstrList.forEachIndexed {
-        index, value ->
+    mstrList.forEachIndexed { index, value ->
         println("$value = ${value.length}")
     }
+
+    println(foo(1, { it -> it + 1 }))
+    println(foo(10, { it -> it * it }))
 }
 
 // 简单直接的函数定义
@@ -26,3 +28,6 @@ fun g(s: String) = s.length
 fun h(g: G, f: F): H {
     return { x -> f(g(x)) }
 }
+
+
+fun <T> foo(x: Int = 1, transform: (Int) -> T = { it as T }) = transform(x)
