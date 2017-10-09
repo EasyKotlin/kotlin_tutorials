@@ -29,6 +29,12 @@ fun casesWhen(obj: Any?) {
         is Char -> println("${obj} ===> 这是一个 Char 类型数据")
         else -> println("${obj} ===> else类似于Java中的 case-switch 中的 default")
     }
+    var x = 10
+    when{
+        x in 6..10  ->  println("大于6小于等于10")
+        x < 6 -> println("小于6")
+        else -> println("其他")
+    }
 }
 
 //编写一个 Kotlin 程序在屏幕上输出1！+2！+3！+……+10！的和
