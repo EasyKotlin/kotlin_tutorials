@@ -1,0 +1,51 @@
+package com.easy.kotlin
+
+fun main(args: Array<String>) {
+//    println("Hello,World")
+//    println(isLeapYear(2017))
+//    println(isLeapYear(2020))
+//    casesWhen(1)
+//    casesWhen("hello")
+//    casesWhen('X')
+//    casesWhen(null)
+//    println(fact(10))
+    println(sumFact(10))
+}
+
+fun isLeapYear(year: Int): Boolean {
+    var isLeapYear: Boolean
+    if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
+        isLeapYear = true
+    } else {
+        isLeapYear = false
+    }
+    return isLeapYear
+}
+
+fun casesWhen(obj: Any?) {
+    when (obj) {
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9 -> println("${obj} ===> 这是一个0-9之间的数字")
+        "hello" -> println("${obj} ===> 这个是字符串hello")
+        is Char -> println("${obj} ===> 这是一个 Char 类型数据")
+        else -> println("${obj} ===> else类似于Java中的 case-switch 中的 default")
+    }
+}
+
+//编写一个 Kotlin 程序在屏幕上输出1！+2！+3！+……+10！的和
+fun sumFact(n: Int): Int {
+    var sum = 0
+    for (i in 1..n) {
+        sum += fact(i)
+    }
+    return sum
+}
+
+
+fun fact(n: Int): Int {
+    var result = 1
+    when (n) {
+        0, 1 -> result = 1
+        else -> result = n * fact(n - 1)
+    }
+    return result
+}
