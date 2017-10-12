@@ -7,11 +7,12 @@ typealias F = (Int) -> Boolean
 typealias H = (String) -> Boolean
 
 fun main(args: Array<String>) {
-    val h = h(::g, ::f)
     val strList = listOf("a", "ab", "abc", "abcd", "abcde", "abcdef", "abcdefg")
     // 非常好用的流式 API filter，flat，map 等等
-    val mstrList = strList.filter(h)
+    val mstrList = strList.filter(h(g, f))
     println(mstrList)
+
+
     mstrList.forEachIndexed { index, value ->
         println("$value = ${value.length}")
     }
@@ -21,12 +22,11 @@ fun main(args: Array<String>) {
 }
 
 // 简单直接的函数定义
-fun f(x: Int) = x % 2 != 0
-
-fun g(s: String) = s.length
+val f = fun(x: Int) = x % 2 == 1 // 判断输入的Int是否奇数
+val g = fun(s: String) = s.length // 返回输入的字符串参数的长度
 // 简单优雅的高阶函数定义（复合函数）： compose(f, g) = f(g(*))
-fun h(g: G, f: F): H {
-    return { x -> f(g(x)) }
+val h = fun(g: G, f: F): H {
+    return { f(g(it)) }
 }
 
 

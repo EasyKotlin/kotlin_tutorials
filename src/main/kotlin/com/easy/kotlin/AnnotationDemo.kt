@@ -2,12 +2,12 @@ package com.easy.kotlin
 
 annotation class Suspendable
 
-val f = @Suspendable { println(1) }
+val fu = @Suspendable { println(1) }
 
 fun main(args: Array<String>) {
-    f.invoke()
+    fu.invoke()
 
-    f.javaClass.declaredAnnotations.forEach {
+    fu.javaClass.declaredAnnotations.forEach {
         val name = it.annotationClass.qualifiedName
         println(name)
     }
