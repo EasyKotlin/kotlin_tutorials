@@ -1,5 +1,7 @@
 package com.easy.kotlin;
+
 import static java.lang.System.out;
+
 public class StringUtil {
 
     /**
