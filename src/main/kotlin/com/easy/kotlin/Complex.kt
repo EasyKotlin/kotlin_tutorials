@@ -8,6 +8,8 @@
 
 package com.easy.kotlin
 
+import java.math.BigDecimal
+
 class Complex {
     var real: Int = 0
     var image: Int = 0
@@ -59,4 +61,31 @@ fun main(args: Array<String>) {
     println(p)
     println(m)
     println(t)
+
+    var bigDecimal1 = BigDecimal(100)
+    var bigDecimal2 = BigDecimal(100)
+    val tmp1 = bigDecimal1++
+    val tmp2 = ++bigDecimal2
+    println(tmp1)// 100
+    println(tmp2)// 101
+    println(bigDecimal1) // 101
+    println(bigDecimal2) // 101
+
+
+    var bigDecimal3 = BigDecimal(100)
+    var bigDecimal4 = BigDecimal(100)
+    val tmp3 = bigDecimal3--
+    val tmp4 = --bigDecimal4
+    println(tmp3)// 100
+    println(tmp4)// 99
+    println(bigDecimal3) // 99
+    println(bigDecimal4) // 99
+
+
+
+
 }
+
+
+operator fun BigDecimal.inc() = this + BigDecimal.ONE
+operator fun BigDecimal.dec() = this - BigDecimal.ONE
