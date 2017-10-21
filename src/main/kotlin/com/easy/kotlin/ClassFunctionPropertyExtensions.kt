@@ -15,6 +15,13 @@ fun String.lastChar(): String {
 }
 
 
+fun String.inc(): String {
+    var result = ""
+    this.map { result += it + 1 }
+    return result
+}
+
+
 fun <T> List<T>.filter(predicate: (T) -> Boolean): MutableList<T> {
     val result = ArrayList<T>()
     this.forEach {
@@ -46,6 +53,7 @@ fun main(args: Array<String>) {
     val str = "abc"
     println(str.firstChar()) // a
     println(str.lastChar()) // c
+    println(str.inc()) //
 
     val list = mutableListOf(1, 2, 3, 4, 5, 6, 7)
     val result = list.filter {
