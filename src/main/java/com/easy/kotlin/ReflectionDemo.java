@@ -8,6 +8,10 @@
 
 package com.easy.kotlin;
 
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
 
@@ -23,8 +27,20 @@ public class ReflectionDemo {
         studentService.findStudents("Jack", 20);
 
         // 反射API调用示例
-
-
+        final Class<? extends StudentServiceImpl> studentServiceClass = studentService.getClass();
+        Class<?>[] classes = studentServiceClass.getDeclaredClasses();
+        Annotation[] annotations = studentServiceClass.getAnnotations();
+        ClassLoader classLoader = studentServiceClass.getClassLoader(); // Returns the class loader for the class
+        Field[] fields = studentServiceClass.getDeclaredFields(); // 获取类成员变量
+        Method[] methods = studentServiceClass.getDeclaredMethods(); // 获取类成员方法
+        try {
+            methods[0].getName(); // save
+            methods[0].invoke(studentService, "Jack",20);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
     }
 
 }

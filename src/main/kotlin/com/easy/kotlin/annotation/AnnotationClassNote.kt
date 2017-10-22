@@ -9,8 +9,8 @@
 package com.easy.kotlin.annotation
 
 import java.util.*
+import kotlin.reflect.KClass
 import kotlin.reflect.full.declaredFunctions
-import kotlin.reflect.jvm.javaMethod
 
 @Target(AnnotationTarget.CLASS,
         AnnotationTarget.FUNCTION,
@@ -20,6 +20,13 @@ import kotlin.reflect.jvm.javaMethod
 @Repeatable
 @MustBeDocumented
 annotation class TestCase(val id: String)
+annotation class TestCasee(val id: Int)
+annotation class TestCaseee(val id: Array<String>)
+annotation class TestCaseeee(val id: Run)
+annotation class TestCaseeeeee(val id: KClass<String>)
+
+//annotation class TestCaseeeee(val id: Array<Int>)
+//annotation class TestCaseeeeee(val id: SwordTest)
 
 
 @Target(AnnotationTarget.CLASS,
@@ -66,7 +73,7 @@ fun testAnnoProcessing() {
     }
 }
 
-private fun doSomething(id:String) {
+private fun doSomething(id: String) {
     println("Do Something in Annotation Processing ${id} ${Date()} ")
 }
 
@@ -102,6 +109,13 @@ fun testAnno() {
 
     }
 }
+
+annotation class AnnoX(val value: String)
+
+annotation class AnnoY(
+        val message: String,
+        val annoX: AnnoX = AnnoX("X"))
+
 
 
 
