@@ -11,6 +11,7 @@ package com.easy.kotlin.annotation
 import java.util.*
 import kotlin.reflect.KClass
 import kotlin.reflect.full.declaredFunctions
+import kotlin.reflect.jvm.javaMethod
 
 @Target(AnnotationTarget.CLASS,
         AnnotationTarget.FUNCTION,
@@ -51,14 +52,16 @@ class SwordTest {
 
 
 fun main(args: Array<String>) {
-    testAnno()
+//    testAnno()
     testAnnoProcessing()
 }
 
 fun testAnnoProcessing() {
     val sword = SwordTest()
+    val kClasss:KClass<out SwordTest> = sword::class
+    val kClass = sword::class
 
-    val declaredFunctions = sword::class.declaredFunctions // 获取note对象类型所声明的所有函数
+    val declaredFunctions = kClass.declaredFunctions // 获取sword对象类型所声明的所有函数
     println(declaredFunctions)
 
     for (f in declaredFunctions) {
@@ -68,6 +71,7 @@ fun testAnnoProcessing() {
                 val id = it.id
                 doSomething(id) // 注解处理逻辑
                 f.call(sword, id) // 等价于 f.javaMethod?.invoke(sword, id)
+                // f.javaMethod?.invoke(sword, id)
             }
         }
     }
