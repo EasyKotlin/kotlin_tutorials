@@ -1,4 +1,4 @@
-package com.easy.kotlin
+package com.easy.kotlin.abstract.demo
 
 abstract class Shape {
     abstract var width: Double
@@ -16,7 +16,7 @@ class Rectangle(override var width: Double, override var heigth: Double, overrid
         return heigth * width
     }
 
-    override fun onClick(){
+    override fun onClick() {
         println("${this::class.simpleName} is Clicked!")
     }
 }

@@ -45,26 +45,26 @@ fun fooContainer() {
 //    val staticKClass = Container::class
 //    println(staticKClass)
 
-val typeParameters = kClass.typeParameters // 获取类型参数typeParameters信息，也即泛型信息
+    val typeParameters = kClass.typeParameters // 获取类型参数typeParameters信息，也即泛型信息
 
-val kTypeParameter: KTypeParameter = typeParameters[0]
-println(kTypeParameter.isReified) // false
-println(kTypeParameter.name) // T
-println(kTypeParameter.upperBounds) // [kotlin.Comparable<T>]
-println(kTypeParameter.variance) // INVARIANT
+    val kTypeParameter: KTypeParameter = typeParameters[0]
+    println(kTypeParameter.isReified) // false
+    println(kTypeParameter.name) // T
+    println(kTypeParameter.upperBounds) // [kotlin.Comparable<T>]
+    println(kTypeParameter.variance) // INVARIANT
 
-val constructors = kClass.constructors
-for (KFunction in constructors) {
-    KFunction.parameters.forEach {
-        val name = it.name
-        val type = it.type
-        println("name = ${name}") // elements
-        println("type = ${type}") // kotlin.collections.MutableList<T>
-        for (KTypeProjection in type.arguments) {
-            println(KTypeProjection.type) // T
+    val constructors = kClass.constructors
+    for (KFunction in constructors) {
+        KFunction.parameters.forEach {
+            val name = it.name
+            val type = it.type
+            println("name = ${name}") // elements
+            println("type = ${type}") // kotlin.collections.MutableList<T>
+            for (KTypeProjection in type.arguments) {
+                println(KTypeProjection.type) // T
+            }
         }
     }
-}
 
     kClass.declaredFunctions
     kClass.members
@@ -140,19 +140,18 @@ fun testReflectProperty() {
 }
 
 
+fun testBindRef() {
+    val digitRegex = "\\d+".toRegex()
+    digitRegex.matches("7") // true
+    digitRegex.matches("6") // true
+    digitRegex.matches("5") // true
+    digitRegex.matches("X") // false
 
-fun testBindRef(){
-val digitRegex = "\\d+".toRegex()
-digitRegex.matches("7") // true
-digitRegex.matches("6") // true
-digitRegex.matches("5") // true
-digitRegex.matches("X") // false
-
-val isDigit = digitRegex::matches // 绑定函数 isNumber = numberRegex::matches
-isDigit("7")// true
-isDigit("6")// true
-isDigit("5")// true
-isDigit("X")// true
+    val isDigit = digitRegex::matches // 绑定函数 isNumber = numberRegex::matches
+    isDigit("7")// true
+    isDigit("6")// true
+    isDigit("5")// true
+    isDigit("X")// true
 }
 
 

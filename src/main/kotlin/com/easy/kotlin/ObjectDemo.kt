@@ -1,31 +1,37 @@
 package com.easy.kotlin
 
-import java.io.File
-
-
-fun main(args: Array<String>) {
-    println(User.username)
-    println(User.password)
-    User.hello()
-
-    DataProcessor.process()
-
+object StringUtil {
+    fun isEmpty(str: String): Boolean {
+        return str.trim() == ""
+    }
 }
 
+fun main(args: Array<String>) {
+    val b = StringUtil.isEmpty("")
+    println(b)
 
-object User {
-    val username: String = "admin"
-    val password: String = "admin"
-    fun hello() {
-        println("Hello, object !")
-    }
+    val p = DataProcessor()
+    p.processHTML()
+    p.processJSON()
+//    p.processText()
+    DataProcessor.processText()
+
 }
 
 
 class DataProcessor {
-    companion object DataProcessor {
-        fun process() {
-            println("I am processing data ...")
+    fun processJSON() {
+        println("Process JSON")
+    }
+
+    fun processHTML() {
+        println("Process HTML")
+    }
+
+    companion object { // 伴生对象
+        fun processText() {
+            println("Process Text")
         }
     }
+
 }

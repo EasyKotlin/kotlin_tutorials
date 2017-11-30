@@ -11,3 +11,18 @@ enum class Color(val rgb: Int) {
     GREEN(0x00FF00),
     BLUE(0x0000FF)
 }
+
+fun main(args: Array<String>) {
+    val east = Direction.EAST
+    println(east.name)
+    println(east.ordinal)
+
+    println(Direction.NORTH.name)
+    println(Direction.NORTH.ordinal)
+
+    val c = Color.GREEN
+    println(c.rgb)
+    println(c.name)
+    println(c.ordinal)
+
+}

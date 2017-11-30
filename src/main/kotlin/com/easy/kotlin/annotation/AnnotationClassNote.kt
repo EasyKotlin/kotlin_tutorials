@@ -11,7 +11,6 @@ package com.easy.kotlin.annotation
 import java.util.*
 import kotlin.reflect.KClass
 import kotlin.reflect.full.declaredFunctions
-import kotlin.reflect.jvm.javaMethod
 
 @Target(AnnotationTarget.CLASS,
         AnnotationTarget.FUNCTION,
@@ -21,6 +20,7 @@ import kotlin.reflect.jvm.javaMethod
 @Repeatable
 @MustBeDocumented
 annotation class TestCase(val id: String)
+
 annotation class TestCasee(val id: Int)
 annotation class TestCaseee(val id: Array<String>)
 annotation class TestCaseeee(val id: Run)
@@ -58,7 +58,7 @@ fun main(args: Array<String>) {
 
 fun testAnnoProcessing() {
     val sword = SwordTest()
-    val kClasss:KClass<out SwordTest> = sword::class
+    val kClasss: KClass<out SwordTest> = sword::class
     val kClass = sword::class
 
     val declaredFunctions = kClass.declaredFunctions // 获取sword对象类型所声明的所有函数
@@ -117,8 +117,8 @@ fun testAnno() {
 annotation class AnnoX(val value: String)
 
 annotation class AnnoY(
-        val message: String,
-        val annoX: AnnoX = AnnoX("X"))
+    val message: String,
+    val annoX: AnnoX = AnnoX("X"))
 
 
 
