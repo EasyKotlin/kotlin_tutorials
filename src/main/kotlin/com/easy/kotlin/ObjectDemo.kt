@@ -1,13 +1,13 @@
 package com.easy.kotlin
 
-object StringUtil {
+object StringUtilKt {
     fun isEmpty(str: String): Boolean {
         return str.trim() == ""
     }
 }
 
 fun main(args: Array<String>) {
-    val b = StringUtil.isEmpty("")
+    val b = StringUtilKt.isEmpty("")
     println(b)
 
     val p = DataProcessor()

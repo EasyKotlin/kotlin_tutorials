@@ -50,6 +50,8 @@ var <T> MutableList<T>.lastElement: T
 
 
 fun main(args: Array<String>) {
+    "abc".firstChar()
+
     val str = "abc"
     println(str.firstChar()) // a
     println(str.lastChar()) // c
