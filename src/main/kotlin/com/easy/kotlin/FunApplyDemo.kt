@@ -9,7 +9,6 @@
 package com.easy.kotlin
 
 fun testApply() {
-
     // 普通写法
     val list = mutableListOf<String>()
     list.add("A")
